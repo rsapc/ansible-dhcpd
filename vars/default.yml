@@ -2,18 +2,16 @@
 
 dhcpd_base_packages_map:
   'server':
-    - 'dhcp'
+    - 'dhcp-server'
   'relay':
-    - 'dhcp'
+    - 'dhcp-relay'
   'probe': []
 
 dhcpd_services:
   'server':
-    - 'dhcpd4'
-    - 'dhcpd6'
+    - 'dhcpd'
   'relay':
-    - 'dhcpd4'
-    - 'dhcpd6'
+    - 'dhcpd'
   'probe': []
 
 dhcpd_templates:
