@@ -1,7 +1,7 @@
 ---
 
-- include: dist_vars.yml
-- include: install.yml
+- include_tasks: dist_vars.yml
+- include_tasks: install.yml
 
 - name: Get list of nameservers configured in /etc/resolv.conf
   shell: grep -E '^nameserver\s' /etc/resolv.conf | awk '{print $2}'
@@ -43,5 +43,5 @@
   command: touch /var/lib/dhcp/dhcpd6.leases creates=/var/lib/dhcp/dhcpd6.leases
   when: dhcpd_ipversion == '6'
 
-- include: dhcp-probe.yml
+- include_tasks: dhcp-probe.yml
   when: dhcpd_probe|d() and dhcpd_probe
