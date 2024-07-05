@@ -15,6 +15,10 @@
     - ansible_os_family == "Debian"
     - dhcpd_mode == 'relay'
 
+- name: Show packages to install
+  ansible.builtin.debug:
+    var: dhcpd_base_packages_map[dhcpd_mode]
+
 - name: Install DHCP packages
   package:
     name: '{{ item }}'
