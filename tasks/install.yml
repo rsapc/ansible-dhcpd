@@ -19,9 +19,9 @@
   package:
     name: '{{ item }}'
     state: 'present'
-  with_flattened:
-    - '{{ dhcpd_base_packages_map[dhcpd_mode] }}'
-    - '{{ dhcpd_base_packages_map["probe"] }}'
+  loop:
+    - '{{ dhcpd_base_packages_map[dhcpd_mode] | flatten }}'
+    - '{{ dhcpd_base_packages_map["probe"] | flatten }}'
 
 - name: Reconfigure ISC DHCP relay
   command: dpkg-reconfigure --frontend=noninteractive isc-dhcp-relay
